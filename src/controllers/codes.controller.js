@@ -6,10 +6,6 @@ CodesController.addRecordCode = async (req, res) => {
   try {
     const recordData = req.body;
     const concert = await Concert.findById(req.params.concert);
-    console.log(
-      "🚀 ~ file: codes.controller.js:9 ~ CodesController.addRecordCode= ~ concert:",
-      concert
-    );
 
     // Realiza validaciones en los datos si es necesario
 
