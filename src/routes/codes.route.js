@@ -8,7 +8,7 @@ const {
   deleteAndLoadCodes,
 } = require("../controllers/codes.controller");
 
-router.get("/valid/:conciert", getValidCodes);
+router.get("/valid/:concert", getValidCodes);
 router.get("/registration/:concert", getRecordsCodes);
 router.post("/add-record/:concert", addRecordCode);
 router.post("/delete-load-codes/:concert", deleteAndLoadCodes);
