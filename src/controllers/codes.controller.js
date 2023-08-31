@@ -62,7 +62,7 @@ CodesController.deleteAndLoadCodes = async (req, res) => {
     // Agrega los nuevos datos al array en todos los documentos
     await Concert.updateMany(
       {
-        _id: "64dc490f6087bf6f5c14f4fb",
+        _id: req.params.concert,
       },
       { $push: { validationCodes: { $each: filledData } } }
     );
