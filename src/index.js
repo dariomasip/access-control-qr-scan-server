@@ -17,6 +17,7 @@ app.use(cors());
 
 // routes
 app.use("/api/v1.0/concerts", require("./routes/concerts.route"));
+app.use("/api/v1.0/codes", require("./routes/codes.route"));
 
 // Settings
 app.set("port", process.env.PORT || 3001);
