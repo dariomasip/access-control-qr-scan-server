@@ -3,12 +3,12 @@ const Concert = require("../models/Conciert");
 const CodesController = {};
 
 CodesController.addRecordCode = async (req, res) => {
-  const concert = await Concert.findById(req.params.concert);
   try {
     const recordData = req.body;
+    const concert = await Concert.findById(req.params.concert);
     console.log(
-      "🚀 ~ file: concerts.controller.js:43 ~ CodesController.addRecordCode= ~ req.body:",
-      req.body
+      "🚀 ~ file: codes.controller.js:9 ~ CodesController.addRecordCode= ~ concert:",
+      concert
     );
 
     // Realiza validaciones en los datos si es necesario
@@ -27,7 +27,7 @@ CodesController.addRecordCode = async (req, res) => {
 };
 
 CodesController.getValidCodes = async (req, res) => {
-  const codes = await Concert.findById(req.params.conciert, {
+  const codes = await Concert.findById(req.params.concert, {
     validationCodes: 1,
   });
 
@@ -35,7 +35,7 @@ CodesController.getValidCodes = async (req, res) => {
 };
 
 CodesController.getRecordsCodes = async (req, res) => {
-  const codes = await Concert.findById(req.params.conciert, {
+  const codes = await Concert.findById(req.params.concert, {
     registrationCodes: 1,
   });
 
@@ -47,7 +47,7 @@ CodesController.deleteAndLoadCodes = async (req, res) => {
     // Borra el contenido del array en todos los documentos
     await Concert.updateMany(
       {
-        _id: "64dc490f6087bf6f5c14f4fb",
+        _id: req.params.concert,
       },
       { $set: { validationCodes: [] } }
     );

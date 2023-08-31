@@ -5,6 +5,7 @@ const concertSchema = new Schema([
     id: Number,
     date: Date,
     location: String,
+    allowedHours: String,
     validationCodes: [
       {
         code: {
@@ -39,7 +40,7 @@ const concertSchema = new Schema([
         },
         reason: {
           type: String,
-          enum: ["code_not_found", "code_already_scanned", null],
+          enum: ["code_not_found", "code_already_scanned", "overtime", null],
         },
       },
     ],

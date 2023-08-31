@@ -9,8 +9,8 @@ const {
 } = require("../controllers/codes.controller");
 
 router.get("/valid/:conciert", getValidCodes);
-router.get("/registration/:conciert", getRecordsCodes);
-router.post("/add-record/:conciert", addRecordCode);
-router.post("/delete-load-codes", deleteAndLoadCodes);
+router.get("/registration/:concert", getRecordsCodes);
+router.post("/add-record/:concert", addRecordCode);
+router.post("/delete-load-codes/:concert", deleteAndLoadCodes);
 
 module.exports = router;
