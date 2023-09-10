@@ -162,7 +162,7 @@ GET https://{{your_domain}}/api/v1.0/codes/resgistration/64effa691db394b49e4685f
 **Example Request**:
 
 ```http
-GET https://{{your_domain}}/api/v1.0/codes/add-record/64effa691db394b49e4685f6
+POST https://{{your_domain}}/api/v1.0/codes/add-record/64effa691db394b49e4685f6
 ```
 
 **Successful Response:**
