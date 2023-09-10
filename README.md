@@ -1,4 +1,4 @@
-#Backend
+# Guest Access Control with QR Code Scanning (Backend)
 
 Concise description of what the backend does and its purpose in the context of the project.
 
@@ -19,7 +19,7 @@ Concise description of what the backend does and its purpose in the context of t
 - Node.js 18.17.1
 - MongoDB
 
-## Setting
+## Settings
 
 1. Clone the repository:
 
