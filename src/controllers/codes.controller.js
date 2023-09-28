@@ -54,6 +54,7 @@ CodesController.deleteAndLoadCodes = async (req, res) => {
       const filledItem = {
         code: item.code || "",
         type: item.type || "",
+        user: item.user || "",
         // Agrega más campos y asigna valores según sea necesario
       };
       return filledItem;

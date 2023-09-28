@@ -4,6 +4,7 @@ const concertSchema = new Schema([
   {
     id: Number,
     date: Date,
+    updateAt: Date,
     location: String,
     allowedHours: String,
     validationCodes: [
@@ -15,6 +16,9 @@ const concertSchema = new Schema([
         type: {
           type: String,
           required: true,
+        },
+        user: {
+          type: String,
         },
         expirationDate: {
           type: Date,
@@ -32,6 +36,9 @@ const concertSchema = new Schema([
           enum: ["valid", "invalid"],
         },
         type: {
+          type: String,
+        },
+        user: {
           type: String,
         },
         validatedAt: {

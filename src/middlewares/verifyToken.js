@@ -1,6 +1,5 @@
 module.exports = (req, res, next) => {
   const authorization = req.get("authorization");
-  console.log("🚀 ~ file: verifyToken.js:3 ~ authorization:", authorization);
 
   let token = "";
 
