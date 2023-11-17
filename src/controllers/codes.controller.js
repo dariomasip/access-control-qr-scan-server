@@ -67,12 +67,19 @@ CodesController.deleteAndLoadCodes = async (req, res) => {
       },
       { $push: { validationCodes: { $each: filledData } } }
     );
+
+    const currentDate = new Date();
+
+    const updatedDate = await Concert.updateOne(
+      { _id: req.params.concert },
+      { $set: { updateAt: currentDate } }
+    );
+
     console.log("Nuevos datos agregados exitosamente");
+    res.sendStatus(200);
   } catch (error) {
     console.error("Error:", error);
   }
-
-  res.sendStatus(200);
 };
 
 module.exports = CodesController;

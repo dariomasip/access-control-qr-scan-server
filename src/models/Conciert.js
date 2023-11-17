@@ -4,9 +4,11 @@ const concertSchema = new Schema([
   {
     id: Number,
     date: Date,
-    updateAt: Date,
+    updateAt: {
+      type: Date,
+      default: new Date(),
+    },
     location: String,
-    allowedHours: String,
     validationCodes: [
       {
         code: {

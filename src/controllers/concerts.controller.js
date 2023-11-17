@@ -2,32 +2,23 @@ const Concert = require("../models/Conciert");
 
 const ConcertController = {};
 
-ConcertController.addConcert = async (req, res) => {
-  // Create a new concert model
-  const concert = new Concert({
-    location: "Barclays Center",
-    date: new Date(),
-    time: "8:00 PM",
-    seats: 10000,
-  });
+ConcertController.createConcert = async (req, res) => {
+  try {
+    const { location, date } = req.body;
 
-  // Add 100 access codes to the concert
-  for (let i = 0; i < 23; i++) {
-    const code = `${Math.random().toString(36).substring(7)}`;
-    concert.validationCodes.push({
-      code,
-      status: "valid",
-      validatedAt: new Date(),
-      reason: null,
-      expirationDate: new Date(
-        new Date().getTime() + 1000 * 60 * 60 * 24 * 365
-      ),
+    // Crear un nuevo modelo de concierto
+    const concert = new Concert({
+      location,
+      date: new Date(`${date}T00:00:00-03:00`),
     });
+
+    const concertId = await concert.save();
+
+    res.send({ idConcert: concertId._id });
+  } catch (error) {
+    console.error("Error al crear el concierto:", error);
+    res.status(500).send("Error interno del servidor");
   }
-
-  await concert.save();
-
-  res.sendStatus(200);
 };
 
 ConcertController.getConcert = async (req, res) => {
@@ -37,13 +28,16 @@ ConcertController.getConcert = async (req, res) => {
 };
 
 ConcertController.getNextConcert = async (req, res) => {
-  const concert = await Concert.findOne({}, { _id: 1 }).sort({
+  const concert = await Concert.findOne(
+    {},
+    { _id: 1, date: 1, location: 1 }
+  ).sort({
     date: -1,
   });
 
   if (concert) {
-    const { _id } = concert;
-    res.send({ _id });
+    const { _id, date, location } = concert;
+    res.send({ _id, date, location });
   } else {
     res.status(404).send({ error: "No se encontraron conciertos." });
   }

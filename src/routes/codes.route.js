@@ -9,7 +9,7 @@ const {
   deleteAndLoadCodes,
 } = require("../controllers/codes.controller");
 
-router.get("/valid/:concert", verifyToken, getValidCodes);
+router.get("/validation/:concert", verifyToken, getValidCodes);
 router.get("/registration/:concert", verifyToken, getRecordsCodes);
 router.post("/add-record/:concert", verifyToken, addRecordCode);
 router.post("/delete-load-codes/:concert", verifyToken, deleteAndLoadCodes);
